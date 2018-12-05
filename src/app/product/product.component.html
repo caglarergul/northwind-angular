@@ -1,0 +1,11 @@
+<h4 class="page-header">Products</h4>
+<div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of products">
+      <button (click)="addToCart(product)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Add to cart</button>
+      <h5><strong>{{product.productName}}</strong></h5>
+      <p>{{product.quantityPerUnit}}</p>
+      <h6>{{product.unitPrice}}</h6>
+    </li>
+  </ul>
+</div>
