@@ -10,8 +10,14 @@ import { Observable } from "rxjs";
 export class ProductService {
   constructor(private http: Http, @Inject('apiUrl') private apiUrl ) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get(this.apiUrl + '/products')
-    .pipe(map(response=>response.json()));
+  getProducts(seoUrl:string): Observable<Product[]> {
+    if(seoUrl) {
+      return this.http.get(this.apiUrl + '/products/'+seoUrl)
+        .pipe(map(response => response.json()));
+    }else {
+      return this.http.get(this.apiUrl + '/products')
+        .pipe(map(response => response.json()));
+    }
+    
   }
 }

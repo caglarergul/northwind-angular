@@ -7,7 +7,7 @@
     <ul class="dropdown-menu">
       <li *ngFor="let item of cartItems"><a><i class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i> {{item.product.productName}} <span class="pull-right">({{item.quantity}})</span></a></li>
       <li role="separator" class="divider"></li>
-      <li><a href="#" class="text-center"><strong>Go to cart</strong></a></li>
+      <li><a routerLink="my-cart" class="text-center"><strong>Go to cart</strong></a></li>
     </ul>
   </li>
 </ul>

@@ -14,28 +14,35 @@ import { ShippingDetailComponent } from "./shipping-detail/shipping-detail.compo
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { VatAddedPipe } from "./product/vat-added.pipe";
 import { ProductFilterPipe } from "./product/product-filter.pipe";
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from "@angular/router";
 import {
   SimpleNotificationsModule,
   NotificationsService
 } from "angular2-notifications";
-
 import { CartService } from "./cart/cart.service";
-const appRoutes:Routes=[
+
+const appRoutes: Routes = [
   {
-    path:"",
-    redirectTo:"products",
-    pathMatch:"full",
+    path: "",
+    redirectTo: "products",
+    pathMatch: "full"
   },
   {
-    path:"products",
-    component: ProductComponent
+    path: "products",
+    component: ProductComponent,
+    pathMatch: "full"
   },
   {
     path: "products/:seoUrl",
-    component: ProductComponent
+    component: ProductComponent,
+    pathMatch: "full"
+  },
+  {
+    path: "my-cart",
+    component: CartComponent,
+    pathMatch: "full"
   }
-]
+];
 @NgModule({
   declarations: [
     AppComponent,

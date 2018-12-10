@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
   selectedCategory: Category;
 
   getCategories() {
-    this.categoryService.getCategories().subscribe(c => (this.categories = c));
+    this.categoryService.getCategories().subscribe(c => this.categories = c);
   }
   ngOnInit() {
     this.getCategories();
