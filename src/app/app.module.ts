@@ -1,3 +1,4 @@
+import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -11,14 +12,30 @@ import { ProductComponent } from "./product/product.component";
 import { AccountComponent } from "./account/account.component";
 import { ShippingDetailComponent } from "./shipping-detail/shipping-detail.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
-
+import { VatAddedPipe } from "./product/vat-added.pipe";
+import { ProductFilterPipe } from "./product/product-filter.pipe";
+import {Routes, RouterModule} from '@angular/router';
 import {
   SimpleNotificationsModule,
   NotificationsService
 } from "angular2-notifications";
 
 import { CartService } from "./cart/cart.service";
-
+const appRoutes:Routes=[
+  {
+    path:"",
+    redirectTo:"products",
+    pathMatch:"full",
+  },
+  {
+    path:"products",
+    component: ProductComponent
+  },
+  {
+    path: "products/:seoUrl",
+    component: ProductComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,14 +45,18 @@ import { CartService } from "./cart/cart.service";
     AccountComponent,
     ShippingDetailComponent,
     NotFoundComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    VatAddedPipe,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     SimpleNotificationsModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     {

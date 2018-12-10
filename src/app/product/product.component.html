@@ -1,11 +1,16 @@
 <h4 class="page-header">Products</h4>
 <div>
+  <div *ngIf="filterText">You searched for <strong>{{filterText}}</strong></div><br />
+  <input type="text" class="form-control" placeholder="Type something..." [(ngModel)] = 'filterText'/>
+</div>
+<br />
+<div>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let product of products">
+    <li class="list-group-item" *ngFor="let product of products | productFilter:filterText">
       <button (click)="addToCart(product)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Add to cart</button>
-      <h5><strong>{{product.productName}}</strong></h5>
+      <h5><strong>{{product.productName | uppercase}}</strong></h5>
       <p>{{product.quantityPerUnit}}</p>
-      <h6>{{product.unitPrice}}</h6>
+      <h6>{{product.unitPrice | currency:'USD'}} ({{product.unitPrice | vatAdded | currency:'USD':'symbol'}})</h6>
     </li>
   </ul>
 </div>
